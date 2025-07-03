@@ -37,8 +37,9 @@ h1 {
 }
 
 .label {
-  flex: 0 0 120px; /* Give a fixed minimum width */
+  flex: 0 0 150px; /* Give a fixed minimum width */
   margin-right: 10px;
+  Whitepsace: nowarp; /* Aligned value with label */
 }
 
 .vital-value {
