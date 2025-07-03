@@ -34,7 +34,7 @@ function updateDisplay() {
   tempSlider.value = temp;
   rrSlider.value = rr;
   lisinoprilValue.textContent = lisinoprilSlider.value + " mg";
-  chipsValue.textContent = chipsSlider.value + "serving";
+  chipsValue.textContent = chipsSlider.value + " serving";
 }
 
 // Listen for slider changes to update the numbers live
@@ -58,7 +58,7 @@ applyBtn.onclick = function() {
   const lisinoprilDose = parseInt(lisinoprilSlider.value);
   const chipsAmount = parseInt(chipsSlider.value);
 
-  bpSys = defaultVals.bpSys - Math.floor(lisinoprilDose / 10) * 5 + chipsAmount * 2;
+  bpSys = defaultVals.bpSys - Math.floor(lisinoprilDose / 10) * 5 + chipsAmount * 4;
   bpDia = defaultVals.bpDia - Math.floor(lisinoprilDose / 10) * 3 + chipsAmount;
   hr = defaultVals.hr + chipsAmount * 2;
   temp = defaultVals.temp + chipsAmount * 0.1;
