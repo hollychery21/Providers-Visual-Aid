@@ -172,3 +172,62 @@ input[type="range"] {
   font-size: 0.95em;
   margin: 0;
 }
+/* === Tutorial Modal Styles === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+}
+
+.modal-content {
+  background-color: #1f1f1f;
+  color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  border: 1px solid #444;
+}
+
+.modal-content ul {
+  text-align: left;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+.modal-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #2563eb;
+}
