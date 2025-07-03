@@ -37,11 +37,8 @@ h1 {
 }
 
 .label {
-  width: 50px;
-  font-weight: bold;
-  color: #7cf1a7;
-  letter-spacing: 1px;
-  font-size: 1.1em;
+  flex: 0 0 120px; /* Give a fixed minimum width */
+  margin-right: 10px;
 }
 
 .vital-value {
