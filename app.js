@@ -1,3 +1,22 @@
+// Show the modal once per session
+window.onload = function () {
+  if (!sessionStorage.getItem("tutorialSeen")) {
+    openTutorial();
+    sessionStorage.setItem("tutorialSeen", "true");
+  }
+};
+
+function openTutorial() {
+  const modal = document.getElementById("tutorialModal");
+  if (modal) modal.style.display = "block";
+}
+
+function closeTutorial() {
+  const modal = document.getElementById("tutorialModal");
+  if (modal) modal.style.display = "none";
+}
+
+
 // Default vital sign values
 let bpSys = 120, bpDia = 80, hr = 75, temp = 37.0, rr = 16;
 const defaultVals = { bpSys: 120, bpDia: 80, hr: 75, temp: 37.0, rr: 16 };
