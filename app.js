@@ -87,7 +87,7 @@ resetBtn.onclick = function() {
 };
 
 updateDisplay();
-<script>
+
   function openTutorial() {
     document.getElementById("tutorialModal").style.display = "block";
   }
@@ -103,6 +103,6 @@ updateDisplay();
       sessionStorage.setItem("tutorialSeen", "true");
     }
   };
-</script>
+
 
 
