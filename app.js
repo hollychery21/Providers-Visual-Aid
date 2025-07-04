@@ -87,13 +87,22 @@ resetBtn.onclick = function() {
 };
 
 updateDisplay();
-function openTutorial() {
-  document.getElementById('tutorialModal').style.display = 'block';
-}
+<script>
+  function openTutorial() {
+    document.getElementById("tutorialModal").style.display = "block";
+  }
 
-function closeTutorial() {
-  document.getElementById('tutorialModal').style.display = 'none';
-}
+  function closeTutorial() {
+    document.getElementById("tutorialModal").style.display = "none";
+  }
 
-window.onload = openTutorial;
+  // Show tutorial once per session
+  window.onload = function () {
+    if (!sessionStorage.getItem("tutorialSeen")) {
+      openTutorial();
+      sessionStorage.setItem("tutorialSeen", "true");
+    }
+  };
+</script>
+
 
