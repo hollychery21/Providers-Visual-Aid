@@ -2,49 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Provider's Visual Aid</title>
+  <title>Vital Signs Monitor</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<!-- Tutorial Modal -->
-<div id="tutorialModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeTutorial()">&times;</span>
-    <h2>Welcome to Provider's Visual Aid</h2>
-    <p>Here's how to use this tool:</p>
-    <ul>
-      <li>📊 use the vital sign monitor to set their vitals before adjusting the mangement</li>
-      <li>📂 Use the management section to adjust medication dose or food serving</li> 
-      <li>🔍 Simulate time will allow to see how vitals change after management</li>
-    </ul>
-    <button onclick="closeTutorial()">Got it!</button>
-  </div>
-</div>
-
-  
 <body>
-  <button onclick="openTutorial()">Open Tutorial</button>
   <div class="monitor-container">
     <h1>Vital Signs Monitor</h1>
     <div class="vital-monitor">
       <div class="vital-row">
-        <span class="label">Blood Pressure:</span>
+        <span class="label">BP:</span>
         <span id="bp-value" class="vital-value">120/80</span>
         <input type="range" id="bp-sys" min="80" max="200" value="120">
         <input type="range" id="bp-dia" min="40" max="120" value="80">
       </div>
       <div class="vital-row">
-        <span class="label">Heart Rate:</span>
+        <span class="label">HR:</span>
         <span id="hr-value" class="vital-value">75</span>
         <input type="range" id="hr" min="30" max="180" value="75">
       </div>
       <div class="vital-row">
-        <span class="label">Temperature:</span>
+        <span class="label">Temp:</span>
         <span id="temp-value" class="vital-value">37.0</span>
         <input type="range" id="temp" min="34" max="42" step="0.1" value="37.0">
       </div>
       <div class="vital-row">
-        <span class="label">Respiratory Rate:</span>
+        <span class="label">RR:</span>
         <span id="rr-value" class="vital-value">16</span>
         <input type="range" id="rr" min="8" max="40" value="16">
       </div>
@@ -57,9 +39,9 @@
         <span id="Lisinopril-value">0</span>
       </label>
       <label>
-        Doritos:
-        <input type="range" id="Doritos" min="0" max="10" value="0">
-        <span id="Doritos-value">0</span>
+        Chips:
+        <input type="range" id="chips" min="0" max="10" value="0">
+        <span id="chips-value">0</span>
       </label>
       <button id="apply-factor">Simulate time</button>
       <button id="reset">Reset</button>
