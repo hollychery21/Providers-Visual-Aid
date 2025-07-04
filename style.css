@@ -1,26 +1,18 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+body {
   background: #222;
   font-family: 'Segoe UI', Arial, sans-serif;
   color: #fff;
+  margin: 0;
+  padding: 0;
 }
 
 .monitor-container {
-  max-width: 600px;
-  width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
-  margin: 0 auto;
+  max-width: 500px;
+  margin: 40px auto;
   background: #191c22;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   padding: 32px 24px;
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 h1 {
@@ -36,11 +28,6 @@ h1 {
   box-shadow: 0 2px 10px #0009;
   padding: 24px 12px;
   margin-bottom: 28px;
-
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .vital-row {
@@ -50,9 +37,11 @@ h1 {
 }
 
 .label {
-  flex: 0 0 150px;
-  margin-right: 10px;
-  white-space: nowrap;
+  width: 50px;
+  font-weight: bold;
+  color: #7cf1a7;
+  letter-spacing: 1px;
+  font-size: 1.1em;
 }
 
 .vital-value {
@@ -102,7 +91,6 @@ input[type="range"] {
   width: auto;
   display: inline-block;
   text-align: center;
-  min-width: 50px;
 }
 
 #apply-factor, #reset {
@@ -121,4 +109,68 @@ input[type="range"] {
 
 #apply-factor:hover, #reset:hover {
   background: #56e88a;
+}
+
+.ace-inhibitor-container {
+  margin-top: 24px;
+  background: #262a36;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 10px #0003;
+}
+
+.ace-inhibitor-container h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #7cf1a7;
+  font-size: 1.08em;
+}
+
+#ace-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 7px;
+}
+
+#ace-select {
+  width: 100%;
+  min-height: 60px;
+  font-size: 1em;
+  background: #191c22;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #7cf1a7;
+  margin-bottom: 4px;
+}
+
+#ace-input {
+  font-size: 1em;
+  padding: 5px 8px;
+  border: 1px solid #7cf1a7;
+  border-radius: 5px;
+  background: #191c22;
+  color: #fff;
+}
+
+#ace-form button {
+  background: #7cf1a7;
+  border: none;
+  color: #222;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 6px 0;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+#ace-form button:hover {
+  background: #56e88a;
+}
+
+.ace-inhibitor-container .note {
+  color: #aaa;
+  font-size: 0.95em;
+  margin: 0;
 }
