@@ -34,7 +34,7 @@ function updateDisplay() {
   tempSlider.value = temp;
   rrSlider.value = rr;
   lisinoprilValue.textContent = lisinoprilSlider.value + " mg";
-  chipsValue.textContent = chipsSlider.value + "serving";
+  chipsValue.textContent = chipsSlider.value + " serving";
 }
 
 // Listen for slider changes to update the numbers live
@@ -86,23 +86,24 @@ resetBtn.onclick = function() {
   updateDisplay();
 };
 
-updateDisplay();
+// Tutorial modal logic
+function openTutorial() {
+  document.getElementById("tutorialModal").style.display = "block";
+}
 
-  function openTutorial() {
-    document.getElementById("tutorialModal").style.display = "block";
+function closeTutorial() {
+  document.getElementById("tutorialModal").style.display = "none";
+}
+
+// Show tutorial once per session
+window.onload = function () {
+  if (!sessionStorage.getItem("tutorialSeen")) {
+    openTutorial();
+    sessionStorage.setItem("tutorialSeen", "true");
   }
-
-  function closeTutorial() {
-    document.getElementById("tutorialModal").style.display = "none";
-  }
-
-  // Show tutorial once per session
-  window.onload = function () {
-    if (!sessionStorage.getItem("tutorialSeen")) {
-      openTutorial();
-      sessionStorage.setItem("tutorialSeen", "true");
-    }
-  };
+  // Make sure to initialize display on load
+  updateDisplay();
+};
 
 
 
