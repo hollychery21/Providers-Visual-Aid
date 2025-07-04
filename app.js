@@ -1,16 +1,8 @@
-// iOS viewport height fix
-function setFullHeight() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-window.addEventListener('resize', setFullHeight);
-setFullHeight();
-
-// Vital signs default values
+// Default vital sign values
 let bpSys = 120, bpDia = 80, hr = 75, temp = 37.0, rr = 16;
 const defaultVals = { bpSys: 120, bpDia: 80, hr: 75, temp: 37.0, rr: 16 };
 
-// Elements
+// Get slider/input elements
 const bpSysSlider = document.getElementById('bp-sys');
 const bpDiaSlider = document.getElementById('bp-dia');
 const hrSlider = document.getElementById('hr');
@@ -24,12 +16,13 @@ const rrValue = document.getElementById('rr-value');
 
 const lisinoprilSlider = document.getElementById('Lisinopril');
 const lisinoprilValue = document.getElementById('Lisinopril-value');
-const doritosSlider = document.getElementById('Doritos');
-const doritosValue = document.getElementById('Doritos-value');
+const chipsSlider = document.getElementById('chips');
+const chipsValue = document.getElementById('chips-value');
 
 const applyBtn = document.getElementById('apply-factor');
 const resetBtn = document.getElementById('reset');
 
+// Update value display for sliders
 function updateDisplay() {
   bpValue.textContent = `${bpSys}/${bpDia}`;
   hrValue.textContent = hr;
@@ -41,63 +34,55 @@ function updateDisplay() {
   tempSlider.value = temp;
   rrSlider.value = rr;
   lisinoprilValue.textContent = lisinoprilSlider.value + " mg";
-  doritosValue.textContent = doritosSlider.value + (doritosSlider.value == 1 ? " serving" : " servings");
+  chipsValue.textContent = chipsSlider.value + "serving";
 }
 
-lisinoprilSlider.addEventListener('input', () => {
-  lisinoprilValue.textContent = lisinoprilSlider.value + " mg";
-});
+// Listen for slider changes to update the numbers live
+lisinoprilSlider.oninput = function() {
+  lisinoprilValue.textContent = this.value + " mg";
+};
+chipsSlider.oninput = function() {
+  chipsValue.textContent = this.value + " serving";
+};
 
-doritosSlider.addEventListener('input', () => {
-  doritosValue.textContent = doritosSlider.value + (doritosSlider.value == 1 ? " serving" : " servings");
-});
+// Also update values for manual vital sign sliders
+bpSysSlider.oninput = function() { bpSys = parseInt(this.value); updateDisplay(); }
+bpDiaSlider.oninput = function() { bpDia = parseInt(this.value); updateDisplay(); }
+hrSlider.oninput = function() { hr = parseInt(this.value); updateDisplay(); }
+tempSlider.oninput = function() { temp = parseFloat(this.value); updateDisplay(); }
+rrSlider.oninput = function() { rr = parseInt(this.value); updateDisplay(); }
 
-bpSysSlider.addEventListener('input', () => {
-  bpSys = parseInt(bpSysSlider.value);
-  updateDisplay();
-});
-bpDiaSlider.addEventListener('input', () => {
-  bpDia = parseInt(bpDiaSlider.value);
-  updateDisplay();
-});
-hrSlider.addEventListener('input', () => {
-  hr = parseInt(hrSlider.value);
-  updateDisplay();
-});
-tempSlider.addEventListener('input', () => {
-  temp = parseFloat(tempSlider.value);
-  updateDisplay();
-});
-rrSlider.addEventListener('input', () => {
-  rr = parseInt(rrSlider.value);
-  updateDisplay();
-});
-
-function clamp(val, min, max) {
-  return Math.min(Math.max(val, min), max);
-}
-
-applyBtn.onclick = () => {
+// Apply effect when "Simulate time" clicked
+applyBtn.onclick = function() {
+  // Lisinopril: for each 10mg, lower sys by 5, dia by 3
   const lisinoprilDose = parseInt(lisinoprilSlider.value);
-  const doritosAmount = parseInt(doritosSlider.value);
+  const chipsAmount = parseInt(chipsSlider.value);
 
-  bpSys = clamp(defaultVals.bpSys - Math.floor(lisinoprilDose / 10) * 5 + doritosAmount * 4, 80, 200);
-  bpDia = clamp(defaultVals.bpDia - Math.floor(lisinoprilDose / 10) * 3 + doritosAmount, 40, 120);
-  hr = clamp(defaultVals.hr + doritosAmount * 2, 30, 180);
-  temp = clamp(defaultVals.temp + doritosAmount * 0.1, 34, 42);
-  rr = clamp(defaultVals.rr + doritosAmount, 8, 40);
+  bpSys = defaultVals.bpSys - Math.floor(lisinoprilDose / 10) * 5 + chipsAmount * 2;
+  bpDia = defaultVals.bpDia - Math.floor(lisinoprilDose / 10) * 3 + chipsAmount;
+  hr = defaultVals.hr + chipsAmount * 2;
+  temp = defaultVals.temp + chipsAmount * 0.1;
+  rr = defaultVals.rr + chipsAmount;
+
+  // Clamp values to normal ranges
+  bpSys = Math.max(80, Math.min(200, bpSys));
+  bpDia = Math.max(40, Math.min(120, bpDia));
+  hr = Math.max(30, Math.min(180, hr));
+  temp = Math.max(34, Math.min(42, temp));
+  rr = Math.max(8, Math.min(40, rr));
 
   updateDisplay();
 };
 
-resetBtn.onclick = () => {
+// Reset to defaults
+resetBtn.onclick = function() {
   bpSys = defaultVals.bpSys;
   bpDia = defaultVals.bpDia;
   hr = defaultVals.hr;
   temp = defaultVals.temp;
   rr = defaultVals.rr;
   lisinoprilSlider.value = 0;
-  doritosSlider.value = 0;
+  chipsSlider.value = 0;
   updateDisplay();
 };
 
