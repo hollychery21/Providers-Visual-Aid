@@ -87,4 +87,13 @@ resetBtn.onclick = function() {
 };
 
 updateDisplay();
+function openTutorial() {
+  document.getElementById('tutorialModal').style.display = 'block';
+}
+
+function closeTutorial() {
+  document.getElementById('tutorialModal').style.display = 'none';
+}
+
+window.onload = openTutorial;
 
